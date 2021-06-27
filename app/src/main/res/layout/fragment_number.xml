@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -29,67 +29,51 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" />
+                android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/kodomo_font"
+                    android:hint="from..."
+                    android:inputType="numberSigned|textPersonName" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/kodomo_font"
+                    android:hint="to..."
+                    android:inputType="numberSigned|textPersonName" />
 
-                    <EditText
-                        android:id="@+id/first"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="from..."
-                        android:inputType="numberSigned|textPersonName" />
-
-                    <EditText
-                        android:id="@+id/second"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="to..."
-                        android:inputType="numberSigned|textPersonName" />
-
-                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/add"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:background="@drawable/random_start_button_background"
+                android:fontFamily="@font/kodomo_font"
+                android:text="S T A R T !"
+                android:textColor="#A36200"
+                android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@drawable/random_start_button_background"
-            android:text="S T A R T !"
-            android:textColor="#757575"
-            android:textSize="24sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

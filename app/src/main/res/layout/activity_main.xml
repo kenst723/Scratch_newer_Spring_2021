@@ -13,59 +13,52 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
+            app:tabSelectedTextColor="#FFFFFF"
+            app:tabTextColor="#A36200"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
-            app:tabMode="fixed" />
+            app:tabMode="fixed"
+            app:tabTextAppearance="@style/tab_text" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="5"
         android:orientation="vertical">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/number"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical" />
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@drawable/random_start_button_background"
+            android:fontFamily="@font/kodomo_font"
+            android:text="数字でスクラッチ"
+            android:textColor="#A36200"
+            android:textSize="24sp" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/string"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30sp"
-                android:layout_weight="1"
-                android:background="@drawable/random_start_button_background"
-                android:text="数字でスクラッチ"
-                android:textColor="#757575"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/string"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30sp"
-                android:layout_weight="1"
-                android:background="@drawable/random_start_button_background"
-                android:text="名前でスクラッチ"
-                android:textColor="#757575"
-                android:textSize="24sp" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:background="@drawable/random_start_button_background"
+            android:fontFamily="@font/kodomo_font"
+            android:text="名前でスクラッチ"
+            android:textColor="#A36200"
+            android:textSize="24sp" />
     </LinearLayout>
 
 

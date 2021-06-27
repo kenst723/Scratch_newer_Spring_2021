@@ -62,10 +62,6 @@ class NumberFragment : Fragment() {
             }
         }
 
-        val kodomoFont: Typeface = Typeface.createFromAsset(activity!!.assets, "KodomoRounded.otf")
-        first.typeface = kodomoFont
-        second.typeface = kodomoFont
-        add.typeface = kodomoFont
 
      focusChange(first)
      focusChange(second)

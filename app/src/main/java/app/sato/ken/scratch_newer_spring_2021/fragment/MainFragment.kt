@@ -34,28 +34,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val kodomoFont: Typeface = Typeface.createFromAsset(activity!!.assets, "KodomoRounded.otf")
 
-        /*number.typeface = kodomoFont
-        string.typeface = kodomoFont
-
-        //数字でスクラッチ（画面遷移
-        number.setOnClickListener {
-            val intent = Intent(
-                requireContext(),
-                NumberFragment::class.java
-            )
-            startActivity(intent)
-        }
-
-        //名前でスクラッチ（画面遷移
-        string.setOnClickListener {
-            val intent = Intent(
-               *//* applicationContext,
-                ListActivity::class.java*//*
-            )
-            startActivity(intent)
-        }*/
     }
 
 }

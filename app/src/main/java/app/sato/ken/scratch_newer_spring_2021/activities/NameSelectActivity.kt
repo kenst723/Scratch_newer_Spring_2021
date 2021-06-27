@@ -18,20 +18,13 @@ class NameSelectActivity : AppCompatActivity() {
         //Toast送信
         Toast.makeText(applicationContext, "おめでとう!", Toast.LENGTH_SHORT).show()
         //フォント設定
-        val kodomoFont: Typeface = Typeface.createFromAsset(assets, "KodomoRounded.otf")
 
         //テキストを受けとる
         val listContext: String? = intent.getStringExtra(NameFragment.randomList)
-        //フォント
-        finalShowFrag.typeface = kodomoFont
-        //テキストにセット（まだ隠れている状態です。
-        // 削ることで見える仕組み）
         finalShowFrag.text = listContext
 
         stop.setOnClickListener {
             finish()
         }
-        //ボタンテキストのフォント
-        stop.typeface = kodomoFont
     }
 }

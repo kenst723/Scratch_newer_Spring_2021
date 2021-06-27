@@ -48,10 +48,6 @@ class NameFragment : Fragment() {
         //recyclerViewのIDを変数に入れる
         val recyclerview = history_view
 
-        fontButton(add)
-        fontButton(start)
-        fontEditText(content)
-
         //recyclerViewのadapter定義
         val adapter = ViewAdapter(dataList, object : ViewAdapter.ListListener {
             override fun onClickRow(tappedView: View, rowModel: RowModel) {
@@ -180,13 +176,8 @@ class NameFragment : Fragment() {
             }
         })
 
-    private fun fontButton(button: Button){
-        val kodomoFont: Typeface = Typeface.createFromAsset(activity!!.assets, "KodomoRounded.otf")
-        button.typeface = kodomoFont
-    }
-
-    private fun fontEditText(editText: EditText){
-        val kodomoFont: Typeface = Typeface.createFromAsset(activity!!.assets, "KodomoRounded.otf")
-        editText.typeface = kodomoFont
+    override fun onStop() {
+        super.onStop()
+        resultList.removeAll(resultList)
     }
 }

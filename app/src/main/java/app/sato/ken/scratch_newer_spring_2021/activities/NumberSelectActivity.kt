@@ -32,10 +32,6 @@ class NumberSelectActivity : AppCompatActivity() {
 
 
 
-        val kodomoFont: Typeface = Typeface.createFromAsset(assets, "KodomoRounded.otf")
-        finalShowFrag.typeface = kodomoFont
-        stop.typeface = kodomoFont
-
 
         stop.setOnClickListener {
             //画面を閉じる

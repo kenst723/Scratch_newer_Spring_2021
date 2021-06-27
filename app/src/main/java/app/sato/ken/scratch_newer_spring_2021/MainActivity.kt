@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
                                 string.isVisible = true   },
                             10
                         )
-
                     }
                     2 -> {
                         number.isVisible = false
@@ -92,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         mTabLayout = findViewById(R.id.tabs)
+
         mPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         tabItem = ArrayList()
 

@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <ImageView
@@ -30,7 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <EditText
@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:ems="10"
+                android:fontFamily="@font/kodomo_font"
                 android:hint="Name..."
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="true" />
@@ -46,37 +47,42 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/history_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_height="0dp"
+                android:layout_weight="0.75">
 
             </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="25dp"
                     android:layout_weight="1"
                     android:background="@drawable/random_start_button_background"
+                    android:fontFamily="@font/kodomo_font"
                     android:text="ADD"
-                    android:textColor="#757575"
+                    android:textColor="#A36200"
                     android:textSize="24sp" />
 
                 <Button
                     android:id="@+id/start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="25dp"
                     android:layout_weight="1"
                     android:background="@drawable/random_start_button_background"
+                    android:fontFamily="@font/kodomo_font"
                     android:text="START"
-                    android:textColor="#757575"
+                    android:textColor="#A36200"
                     android:textSize="24sp" />
 
             </LinearLayout>

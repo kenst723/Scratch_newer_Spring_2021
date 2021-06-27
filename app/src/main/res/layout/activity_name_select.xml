@@ -71,7 +71,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/random_start_button_background"
                 android:text="R e t r u n"
-                android:textColor="#757575"
+                android:textColor="#A36200"
                 android:textSize="24sp" />
 
         </LinearLayout>
