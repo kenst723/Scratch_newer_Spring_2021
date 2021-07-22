@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -16,17 +17,17 @@ import app.sato.ken.scratch_newer_spring_2021.activities.NameSelectActivity
 import app.sato.ken.scratch_newer_spring_2021.model.RowModel
 import app.sato.ken.scrtch.adapter.HomeViewHolder
 import app.sato.ken.scrtch.adapter.ViewAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_name.*
 
 class NameFragment : Fragment() {
 
-    val text = ""
     var dataList1 = mutableListOf<RowModel>()
     private val dataList = mutableListOf<RowModel>()
     var resultList = mutableListOf<String>()
     private val adapter = ViewAdapter(dataList, object : ViewAdapter.ListListener {
         override fun onClickRow(tappedView: View, rowModel: RowModel) {
-            Toast.makeText(requireContext(), rowModel.title, Toast.LENGTH_SHORT).show()
+
         }
     })
 
@@ -41,8 +42,9 @@ class NameFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_name, container, false)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroyView() {
+        super.onDestroyView()
+
         resultList.removeAll(resultList)
         adapter.notifyDataSetChanged()
         dataList1.removeAll(dataList1)
@@ -75,18 +77,21 @@ class NameFragment : Fragment() {
 
                 recyclerview.adapter = adapter
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    "文字を入力してください",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                val isEmptyFirst = Snackbar.make(posView1, "文字を入力してください", Snackbar.LENGTH_SHORT)
+                isEmptyFirst.show()
+                isEmptyFirst.setAction("OK"){
+                    isEmptyFirst.dismiss()
+                }
+                isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
+                val snackActionView: Button =
+                    isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
+                snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
             }
         }
 
         content.setOnFocusChangeListener { view, _ ->
             val inputMethodManager =
-                activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(
                 view.windowToken,
                 InputMethodManager.HIDE_NOT_ALWAYS
@@ -101,13 +106,15 @@ class NameFragment : Fragment() {
                 intent.putExtra(randomList, resultList.random())
                 startActivity(intent)
             } else {
-
-                Toast.makeText(
-                    requireContext(),
-                    "文字を入力してください",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                val isEmptyFirst = Snackbar.make(posView1, "文字を入力してください", Snackbar.LENGTH_SHORT)
+                isEmptyFirst.show()
+                isEmptyFirst.setAction("OK"){
+                    isEmptyFirst.dismiss()
+                }
+                isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
+                val snackActionView: Button =
+                    isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
+                snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
             }
 
         }

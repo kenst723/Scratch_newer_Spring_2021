@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,7 +42,9 @@
                     android:id="@+id/first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="6dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:fontFamily="@font/kodomo_font"
@@ -53,7 +55,9 @@
                     android:id="@+id/second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:fontFamily="@font/kodomo_font"
@@ -62,18 +66,29 @@
 
             </LinearLayout>
 
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coodnator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp" />
+
             <Button
                 android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="25dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/random_start_button_background"
                 android:fontFamily="@font/kodomo_font"
-                android:text="S T A R T !"
+                android:text="S T A R T "
                 android:textColor="#A36200"
                 android:textSize="24sp" />
 
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

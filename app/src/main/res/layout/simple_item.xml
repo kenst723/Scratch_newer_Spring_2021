@@ -2,7 +2,10 @@
     android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:layout_margin="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="4dp"
     android:background="@drawable/simple_item_background"
     android:elevation="4dp"
     android:orientation="horizontal">

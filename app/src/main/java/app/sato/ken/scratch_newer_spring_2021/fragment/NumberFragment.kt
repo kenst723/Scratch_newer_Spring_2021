@@ -2,17 +2,18 @@ package app.sato.ken.scratch_newer_spring_2021.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import android.widget.TextView
 import app.sato.ken.scratch_newer_spring_2021.R
 import app.sato.ken.scratch_newer_spring_2021.activities.NumberSelectActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_number.*
 import kotlinx.android.synthetic.main.fragment_number.add
 
@@ -42,23 +43,41 @@ class NumberFragment : Fragment() {
             //入力された数字を受け取り
             val subF = first.text.toString()
             val subS = second.text.toString()
+            val posView : View  = view.findViewById(R.id.coodnator)
 
-            //空白の時は処理をしない
-            if (subF == "") {
-                Toast.makeText(requireContext(), "数字を入力してください", Toast.LENGTH_SHORT).show()
-            } else if (subS == "") {
-                Toast.makeText(requireContext(), "数字を入力してください", Toast.LENGTH_SHORT).show()
+            when {
+                subF == "" -> {
+                    val isEmptyFirst = Snackbar.make(posView, "文字を入力してください", Snackbar.LENGTH_SHORT)
+                        isEmptyFirst.show()
+                    isEmptyFirst.setAction("OK"){
+                        isEmptyFirst.dismiss()
+                    }
+                    isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
+                    val snackActionView: Button =
+                        isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
+                    snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                }
+                subS == "" -> {
+                    val isEmptySecond = Snackbar.make(view , "文字を入力してください", Snackbar.LENGTH_SHORT)
+                    isEmptySecond.show()
+                    isEmptySecond.setAction("OK"){
+                        isEmptySecond.dismiss()
+                    }
+                    isEmptySecond.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
+                    val snackActionView: Button =
+                        isEmptySecond.view.findViewById(com.google.android.material.R.id.snackbar_action)
+                    snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                }
+                else -> {
+                    val intent = Intent(requireContext(), NumberSelectActivity::class.java)
 
-                //それ以外の時は処理をする
-            } else {
-                val intent = Intent(requireContext(), NumberSelectActivity::class.java)
+                    //値受け渡しの定義
+                    intent.putExtra(keyF, subF)
+                    intent.putExtra(keyS, subS)
 
-                //値受け渡しの定義
-                intent.putExtra(keyF, subF)
-                intent.putExtra(keyS, subS)
-
-                //アクティビティスタート（画面遷移
-                startActivity(intent)
+                    //アクティビティスタート（画面遷移
+                    startActivity(intent)
+                }
             }
         }
 
@@ -70,7 +89,7 @@ class NumberFragment : Fragment() {
     private fun focusChange(editText: EditText){
         editText.setOnFocusChangeListener{view, _ ->
             val inputMethodManager =
-                activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(
                 view.windowToken,
                 InputMethodManager.HIDE_NOT_ALWAYS

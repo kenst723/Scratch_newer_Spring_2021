@@ -16,7 +16,7 @@ class NameSelectActivity : AppCompatActivity() {
 
 
         //Toast送信
-        Toast.makeText(applicationContext, "おめでとう!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "こすって削ってね！", Toast.LENGTH_SHORT).show()
         //フォント設定
 
         //テキストを受けとる
