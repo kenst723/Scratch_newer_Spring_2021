@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import app.sato.ken.scratch_newer_spring_2021.R
+import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.activities.NameSelectActivity
 import app.sato.ken.scratch_newer_spring_2021.model.RowModel
 import app.sato.ken.scrtch.adapter.HomeViewHolder
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_name.*
 class NameFragment : Fragment() {
 
     var dataList1 = mutableListOf<RowModel>()
+    private val snack = ShowSnackBar()
     private val dataList = mutableListOf<RowModel>()
     var resultList = mutableListOf<String>()
     private val adapter = ViewAdapter(dataList, object : ViewAdapter.ListListener {
@@ -77,19 +79,16 @@ class NameFragment : Fragment() {
 
                 recyclerview.adapter = adapter
             } else {
-                val isEmptyFirst = Snackbar.make(posView1, "文字を入力してください", Snackbar.LENGTH_SHORT)
-                isEmptyFirst.show()
-                isEmptyFirst.setAction("OK"){
-                    isEmptyFirst.dismiss()
-                }
-                isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
-                val snackActionView: Button =
-                    isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
-                snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                snack.show("文字を入力してください",
+                    "OK",
+                    posView1,
+                    requireContext().resources.getColor(R.color.colorPrimary),
+                    resources.getColor(R.color.colorSnackBarActTextColor)
+                )
             }
         }
 
-        content.setOnFocusChangeListener { view, _ ->
+        content.setOnFocusChangeListener {view, _ ->
             val inputMethodManager =
                 requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(
@@ -106,15 +105,12 @@ class NameFragment : Fragment() {
                 intent.putExtra(randomList, resultList.random())
                 startActivity(intent)
             } else {
-                val isEmptyFirst = Snackbar.make(posView1, "文字を入力してください", Snackbar.LENGTH_SHORT)
-                isEmptyFirst.show()
-                isEmptyFirst.setAction("OK"){
-                    isEmptyFirst.dismiss()
-                }
-                isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
-                val snackActionView: Button =
-                    isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
-                snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                snack.show("文字を入力してください",
+                    "OK",
+                    posView1,
+                    requireContext().resources.getColor(R.color.colorPrimary),
+                    resources.getColor(R.color.colorSnackBarActTextColor)
+                )
             }
 
         }

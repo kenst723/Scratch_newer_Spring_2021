@@ -12,8 +12,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import app.sato.ken.scratch_newer_spring_2021.R
+import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.activities.NumberSelectActivity
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_name.*
 import kotlinx.android.synthetic.main.fragment_number.*
 import kotlinx.android.synthetic.main.fragment_number.add
 
@@ -24,6 +26,7 @@ class NumberFragment : Fragment() {
         const val keyF = "keyF"
         const val keyS = "keyS"
     }
+    private val snack = ShowSnackBar()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,26 +50,21 @@ class NumberFragment : Fragment() {
 
             when {
                 subF == "" -> {
-                    val isEmptyFirst = Snackbar.make(posView, "文字を入力してください", Snackbar.LENGTH_SHORT)
-                        isEmptyFirst.show()
-                    isEmptyFirst.setAction("OK"){
-                        isEmptyFirst.dismiss()
-                    }
-                    isEmptyFirst.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
-                    val snackActionView: Button =
-                        isEmptyFirst.view.findViewById(com.google.android.material.R.id.snackbar_action)
-                    snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                    snack.show("文字を入力してください",
+                        "OK",
+                        posView,
+                        requireContext().resources.getColor(R.color.colorPrimary),
+                        resources.getColor(R.color.colorSnackBarActTextColor)
+                    )
                 }
                 subS == "" -> {
-                    val isEmptySecond = Snackbar.make(view , "文字を入力してください", Snackbar.LENGTH_SHORT)
-                    isEmptySecond.show()
-                    isEmptySecond.setAction("OK"){
-                        isEmptySecond.dismiss()
-                    }
-                    isEmptySecond.view.setBackgroundColor(requireContext().resources.getColor(R.color.colorPrimary))
-                    val snackActionView: Button =
-                        isEmptySecond.view.findViewById(com.google.android.material.R.id.snackbar_action)
-                    snackActionView.setTextColor(resources.getColor(R.color.colorSnackBarActTextColor))
+                    snack.show(
+                        "文字を入力してください",
+                        "OK",
+                        posView,
+                        requireContext().resources.getColor(R.color.colorPrimary),
+                        resources.getColor(R.color.colorSnackBarActTextColor)
+                )
                 }
                 else -> {
                     val intent = Intent(requireContext(), NumberSelectActivity::class.java)

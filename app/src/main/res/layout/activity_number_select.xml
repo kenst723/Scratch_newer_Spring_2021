@@ -50,11 +50,20 @@
 
         </FrameLayout>
 
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/number_select_snack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp" />
+
         <Button
             android:id="@+id/stop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="12dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/random_start_button_background"

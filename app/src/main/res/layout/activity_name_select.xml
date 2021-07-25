@@ -51,6 +51,15 @@
 
         </FrameLayout>
 
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/name_select_snack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp" />
+
         <Button
             android:id="@+id/stop"
             android:layout_width="match_parent"

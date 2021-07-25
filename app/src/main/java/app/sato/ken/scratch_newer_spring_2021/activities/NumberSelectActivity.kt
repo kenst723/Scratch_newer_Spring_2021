@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import app.sato.ken.scratch_newer_spring_2021.R
+import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.fragment.NumberFragment
+import kotlinx.android.synthetic.main.activity_name_select.*
 import kotlinx.android.synthetic.main.activity_number_select.*
+import kotlinx.android.synthetic.main.activity_number_select.finalShowFrag
+import kotlinx.android.synthetic.main.activity_number_select.stop
 
 class NumberSelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +21,7 @@ class NumberSelectActivity : AppCompatActivity() {
         //入力されたテキストを受け取る
         val message: String? = intent.getStringExtra(NumberFragment.keyF)
         val message2: String? = intent.getStringExtra(NumberFragment.keyS)
-
+        val snack = ShowSnackBar()
 
         //受け取ったテキスト2つをStringにしてIntに変換
         val intF = Integer.parseInt(message.toString())
@@ -28,10 +32,12 @@ class NumberSelectActivity : AppCompatActivity() {
         //ランダムテキストをTextViewにセット
         finalShowFrag.text = random.toString()
         //メッセージ
-        Toast.makeText(applicationContext, "こすって削ってね！！", Toast.LENGTH_LONG).show()
-
-
-
+        snack.show("こすって削ってね!",
+            "OK",
+            number_select_snack,
+            applicationContext.resources.getColor(R.color.colorPrimary),
+            resources.getColor(R.color.colorSnackBarActTextColor)
+        )
 
         stop.setOnClickListener {
             //画面を閉じる
