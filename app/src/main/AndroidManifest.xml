@@ -9,11 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NameSelectActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".activities.NumberSelectActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".activities.RouletteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.NameSelectActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.NumberSelectActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

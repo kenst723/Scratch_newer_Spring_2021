@@ -1,5 +1,6 @@
 package app.sato.ken.scratch_newer_spring_2021
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -12,12 +13,14 @@ import androidx.viewpager.widget.ViewPager
 import app.sato.ken.scratch_newer_spring_2021.fragment.MainFragment
 import app.sato.ken.scratch_newer_spring_2021.fragment.NameFragment
 import app.sato.ken.scratch_newer_spring_2021.fragment.NumberFragment
+import app.sato.ken.scratch_newer_spring_2021.fragment.RouletteFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 var mPosition: Int? = null
 lateinit var mTabLayout: TabLayout
+@SuppressLint("StaticFieldLeak")
 lateinit var mPagerAdapter: MainActivity.SectionsPagerAdapter
 lateinit var tabItem: ArrayList<String>
 
@@ -62,19 +65,27 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         number.isVisible = false
                         string.isVisible = false
+                        roulette.isVisible = false
                     }
                     1 -> {
 
                         Handler().postDelayed(
                             {
                                 number.isVisible = true
-                                string.isVisible = true   },
+                                string.isVisible = true
+                                roulette.isVisible = true},
                             10
                         )
                     }
                     2 -> {
                         number.isVisible = false
                         string.isVisible = false
+                        roulette.isVisible = false
+                    }
+                    3 ->{
+                        number.isVisible = false
+                        string.isVisible = false
+                        roulette.isVisible = false
                     }
                 }
             }
@@ -95,9 +106,10 @@ class MainActivity : AppCompatActivity() {
         mPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         tabItem = ArrayList()
 
-        addTab("数字でスクラッチ")
-        addTab("ホーム")
-        addTab("名前でスクラッチ")
+        addTab("数字でスクラッチ")//0
+        addTab("ホーム")//1
+        addTab("名前でスクラッチ")//2
+        addTab("ルーレット")//3
 
         Handler().postDelayed(
             {
@@ -137,9 +149,13 @@ class MainActivity : AppCompatActivity() {
                     mPosition = 1
                     MainFragment()
                 }
-                else ->{
+                2 ->{
                     mPosition = 2
                     NameFragment()
+                }
+                else ->{
+                    mPosition = 3
+                    RouletteFragment()
                 }
             }
         }

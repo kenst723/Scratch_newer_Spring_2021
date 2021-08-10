@@ -7,18 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import app.sato.ken.scratch_newer_spring_2021.R
-import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
+import app.sato.ken.scratch_newer_spring_2021.function.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.activities.NameSelectActivity
 import app.sato.ken.scratch_newer_spring_2021.model.RowModel
 import app.sato.ken.scrtch.adapter.HomeViewHolder
 import app.sato.ken.scrtch.adapter.ViewAdapter
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_name.*
 
 class NameFragment : Fragment() {
@@ -112,7 +109,6 @@ class NameFragment : Fragment() {
                     resources.getColor(R.color.colorSnackBarActTextColor)
                 )
             }
-
         }
     }
 

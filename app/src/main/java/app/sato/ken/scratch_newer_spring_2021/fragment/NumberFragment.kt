@@ -8,14 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import app.sato.ken.scratch_newer_spring_2021.R
-import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
+import app.sato.ken.scratch_newer_spring_2021.function.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.activities.NumberSelectActivity
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_name.*
 import kotlinx.android.synthetic.main.fragment_number.*
 import kotlinx.android.synthetic.main.fragment_number.add
 

@@ -1,18 +1,16 @@
 package app.sato.ken.scratch_newer_spring_2021.activities
 
-import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat.IntentBuilder
 import app.sato.ken.scratch_newer_spring_2021.R
-import app.sato.ken.scratch_newer_spring_2021.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.fragment.NameFragment
-import com.google.android.material.snackbar.Snackbar
+import app.sato.ken.scratch_newer_spring_2021.function.ShowSnackBar
 import kotlinx.android.synthetic.main.activity_name_select.*
-import kotlinx.android.synthetic.main.fragment_name.*
+
 
 class NameSelectActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_name_select)
@@ -32,6 +30,17 @@ class NameSelectActivity : AppCompatActivity() {
 
         stop.setOnClickListener {
             finish()
+        }
+
+        share_name.setOnClickListener{
+            val builder = IntentBuilder.from(this)
+            val subject = "シェアメッセージ"
+            val bodyText =
+                "このアプリで\"$listContext\"が当選しました! おめでとう!\nダウンロードはこちら↓\nhttps://play.google.com/store/apps/details?id=app.sato.ken.scrtch"
+            builder.setSubject(subject) /// 件名
+                .setText(bodyText) /// 本文
+                .setType("text/plain")
+            builder.startChooser()
         }
     }
 }

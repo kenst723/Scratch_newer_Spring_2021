@@ -13,20 +13,21 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            app:tabSelectedTextColor="#FFFFFF"
-            app:tabTextColor="#A36200"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:background="?attr/colorPrimary"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@style/tab_text" />
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#FFFFFF"
+            app:tabTextAppearance="@style/tab_text"
+            app:tabTextColor="#A36200" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </androidx.viewpager.widget.ViewPager>
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_weight="5"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
         <Button
@@ -63,6 +65,20 @@
             android:background="@drawable/random_start_button_background"
             android:fontFamily="@font/kodomo_font"
             android:text="名前でスクラッチ"
+            android:textColor="#A36200"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/roulette"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/random_start_button_background"
+            android:fontFamily="@font/kodomo_font"
+            android:text="ルーレット"
             android:textColor="#A36200"
             android:textSize="24sp" />
     </LinearLayout>
