@@ -53,6 +53,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        roulette.setOnClickListener {
+            view_pager.currentItem += 2
+        }
+
         number.isVisible
         string.isVisible
 

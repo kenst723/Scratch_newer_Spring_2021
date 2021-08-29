@@ -1,20 +1,14 @@
 package app.sato.ken.scratch_newer_spring_2021.activities
 
-import android.app.Application
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import app.sato.ken.scratch_newer_spring_2021.R
 import app.sato.ken.scratch_newer_spring_2021.fragment.RouletteFragment
-import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
+import app.sato.ken.scratch_newer_spring_2021.model.RotateListener
+
+import kotlinx.android.synthetic.main.activity_roulette.*
 
 class RouletteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,43 +18,60 @@ class RouletteActivity : AppCompatActivity() {
         val recievedArray: ArrayList<String>?  = intent.getStringArrayListExtra(RouletteFragment.send)
         Log.d("recieved",recievedArray.toString())
 
-        val pieChart = findViewById<PieChart>(R.id.piechart)
 
-        pieChart.setUsePercentValues(true)
-        pieChart.description.isEnabled = false
-        pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+        val colors = mutableListOf<String>()
+            if (recievedArray != null) {
+                for(i in recievedArray){
+                    /**
+                     * 1..255としないのは、1..255としてしまうと
+                     * 16進数変換時に1桁の数となり、有効な色として認識されないため
+                     * 1桁の16進数は色に変換されない -> IllegalArgumentException
+                     */
+                    val r = (16..255).random()
+                    val g = (16..255).random()
+                    val b = (16..255).random()
+                    val rHex = Integer.toHexString(r)
+                    val gHex = Integer.toHexString(g)
+                    val bHex = Integer.toHexString(b)
 
-        pieChart.dragDecelerationFrictionCoef = 0.95f
-
-        pieChart.isDrawHoleEnabled = false
-        pieChart.setHoleColor(Color.BLACK)
-        pieChart.transparentCircleRadius = 61f
-
-        val yValues = ArrayList<PieEntry>()
+                    colors.add("#$rHex$gHex$bHex")
+                }
+            }
 
 
-        for(i in recievedArray!!){
-            yValues.add(PieEntry(1f,i))
+
+        roulette.apply {
+            setTextColor(R.color.rouletteBlack)
+            setRouletteBorderLineColor(R.color.colorSnackBarActTextColor)
+            getTextColor()
+            setRouletteDataList(recievedArray!!.toList())
+            setRoulettesize(recievedArray.size)
+            setRouletteColor(colors)
         }
 
-        val description = Description()
-        description.text = ""
+        start.setOnClickListener {
+            rotateRoulette()
+        }
 
-        description.textSize = 20f
-        pieChart.description = description
+        retrun.setOnClickListener {
+            finish()
+        }
+    }
 
-        //pieChart.animateXY(1000, 1000)
+    private fun rotateRoulette() {
+        val rouletteListener = object : RotateListener {
+            override fun onRotateStart() {
 
+            }
 
-        val dataSet = PieDataSet(yValues, "")
-        dataSet.sliceSpace = 3f
-        dataSet.selectionShift = 5f
-        dataSet.setColors(*ColorTemplate.JOYFUL_COLORS)
+            @SuppressLint("SetTextI18n")
+            override fun onRotateEnd(result: String) {
+                result_text.text = result
+            }
+        }
 
-        val data = PieData(dataSet)
-        data.setValueTextSize(0f)
-        data.setValueTextColor(Color.BLACK)
-
-        pieChart.data = data
+        // random degrees (options)
+        val toDegrees = (2000..40000).random().toFloat()
+        roulette.rotateRoulette(toDegrees, 4000, rouletteListener)
     }
 }

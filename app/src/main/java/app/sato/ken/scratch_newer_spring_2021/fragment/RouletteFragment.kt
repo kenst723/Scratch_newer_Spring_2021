@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,6 +56,7 @@ class RouletteFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerview = rhistory_view
@@ -106,6 +108,14 @@ class RouletteFragment : Fragment() {
             if (dataList.isNotEmpty() or resultList.isNotEmpty()) {
                 intent.putStringArrayListExtra(send, resultList)
                 startActivity(intent)
+
+                Handler().postDelayed(
+                    {
+                        resultList.clear()
+                        dataList1.clear()
+                        adapter.notifyDataSetChanged()
+                    }, 100
+                )
                 Log.d("sending", resultList.toString())
             } else {
                 snack.show("文字を入力してください",

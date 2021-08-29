@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,40 +8,81 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/piechart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
 
-    </com.github.mikephil.charting.charts.PieChart>
-
-    <Button
-        android:id="@+id/start"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
-        android:layout_weight="5"
-        android:background="@drawable/random_start_button_background"
-        android:fontFamily="@font/kodomo_font"
-        android:text="s t a r t"
-        android:textColor="#A36200"
-        android:textSize="24sp" />
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/stop"
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kodomo_font"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textSize="48dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+          <!--  <com.jhdroid.view.Roulette
+                android:id="@+id/roulette"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="9" />-->
+            <app.sato.ken.scratch_newer_spring_2021.customView.Roulette
+                android:id="@+id/roulette"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                app:srcCompat="@drawable/pin" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
-        android:layout_weight="5"
-        android:background="@drawable/random_start_button_background"
-        android:fontFamily="@font/kodomo_font"
-        android:text="R e t r u n"
-        android:textColor="#A36200"
-        android:textSize="24sp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="5"
+            android:background="@drawable/random_start_button_background"
+            android:fontFamily="@font/kodomo_font"
+            android:text="s t a r t"
+            android:textColor="#A36200"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/retrun"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="5"
+            android:background="@drawable/random_start_button_background"
+            android:fontFamily="@font/kodomo_font"
+            android:text="R e t r u n"
+            android:textColor="#A36200"
+            android:textSize="24sp" />
+    </LinearLayout>
 
 </LinearLayout>

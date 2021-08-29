@@ -5,4 +5,22 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorSnackBarTextBG">#A36200</color>
     <color name="colorSnackBarActTextColor">#FFFFFF</color>
+
+    <!--Roulette colours-->
+    <color name="rouletteRed">#5C040C</color>
+    <color name="rouletteBlack">#010000</color>
+    <color name="rouletteGreen">#114200</color>
+    <color name="rouletteGold">#E0BF5F</color>
+    <color name="rouletteDarkGold">#816A41</color>
+    <color name="rouletteSilver">#E3D5D0</color>
+    <color name="rouletteWhite">#BCB6B8</color>
+    <color name="rouletteBrightRed">#CCFE2803</color>
+
+    <!--Random Dragon colours-->
+    <color name="dragonRed">#7F2926</color>
+    <color name="dragonBlue">#261B5B</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
 </resources>

@@ -2,4 +2,7 @@
     <string name="app_name">Scratch_newer_Spring_2021</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="roulette_wheel_centre_label">DR</string>
+    <string name="roulette_wheel_spin_button_label">Spin Me</string>
 </resources>
