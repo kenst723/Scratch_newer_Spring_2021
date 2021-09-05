@@ -6,7 +6,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import app.sato.ken.scratch_newer_spring_2021.R
 import app.sato.ken.scratch_newer_spring_2021.fragment.RouletteFragment
+import app.sato.ken.scratch_newer_spring_2021.function.ShowSnackBar
 import app.sato.ken.scratch_newer_spring_2021.model.RotateListener
+import kotlinx.android.synthetic.main.activity_name_select.*
 
 import kotlinx.android.synthetic.main.activity_roulette.*
 
@@ -67,11 +69,20 @@ class RouletteActivity : AppCompatActivity() {
             @SuppressLint("SetTextI18n")
             override fun onRotateEnd(result: String) {
                 result_text.text = result
+
+                val snack = ShowSnackBar()
+
+                snack.show("結果は $result です!",
+                    "OK",
+                    roulette_coordinator,
+                    applicationContext.resources.getColor(R.color.colorPrimary),
+                    resources.getColor(R.color.colorSnackBarActTextColor)
+                )
             }
         }
 
         // random degrees (options)
-        val toDegrees = (2000..40000).random().toFloat()
+        val toDegrees = (2000..10000).random().toFloat()
         roulette.rotateRoulette(toDegrees, 4000, rouletteListener)
     }
 }

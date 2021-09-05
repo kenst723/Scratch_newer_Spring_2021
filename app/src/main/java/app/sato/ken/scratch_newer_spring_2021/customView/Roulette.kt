@@ -2,14 +2,12 @@ package app.sato.ken.scratch_newer_spring_2021.customView
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
+import androidx.core.view.*
 import app.sato.ken.scratch_newer_spring_2021.R
 import app.sato.ken.scratch_newer_spring_2021.model.RotateListener
 
@@ -47,9 +45,9 @@ class Roulette @JvmOverloads constructor(
 
 
         strokePaint.apply{
-            color = Color.BLACK
+            color = Color.rgb(117,117,117)
             style = Paint.Style.STROKE
-            strokeWidth = 10f
+            strokeWidth = 8f
             isAntiAlias = true
         }
         fillPaint.apply {
@@ -58,18 +56,19 @@ class Roulette @JvmOverloads constructor(
         }
         textPaint.apply {
             color = Color.BLACK
-            textSize = 60f
+            textSize = 100f
             textAlign = Paint.Align.CENTER
+            typeface = Typeface.createFromAsset(getContext().assets,"KodomoRounded.otf")
         }
     }
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        val rectLeft = left.toFloat() + 6
-        val rectRight = right.toFloat() - 6
+        val rectLeft = left.toFloat() + paddingLeft
+        val rectRight = right.toFloat() - paddingLeft
         val rectTop = height / 2f - rectRight / 2f - paddingTop
         val rectBottom = height / 2f + rectRight / 2f + paddingRight
-        val rectF = RectF(rectLeft, rectTop, rectRight, rectBottom)
+        val rectF = RectF(rectLeft+60, rectTop+60, rectRight-60, rectBottom-60)
         canvas?.drawArc(rectF, 0f, 360f, true, strokePaint)
 
         drawRoulette(canvas,rectF)
@@ -82,10 +81,7 @@ class Roulette @JvmOverloads constructor(
             val sweepAngle = 360f/rouletteSize.toFloat()
             val centerX = (rectF.left + rectF.right) / 2
             val centerY = (rectF.top + rectF.bottom) / 2
-            val radius = (rectF.right - rectF.left) / 2 * 0.5
-
-
-
+            val radius = (rectF.right - rectF.left) / 2 * 0.6
 
                 for (i in 0 until rouletteSize) {
                     fillPaint.color = Color.parseColor(colors[i])
@@ -138,6 +134,8 @@ class Roulette @JvmOverloads constructor(
         this.textSize = textSize
         invalidate()
     }
+
+
     fun setRouletteDataList(list : List<String>){
         this.rouletteDataList = list
         invalidate()

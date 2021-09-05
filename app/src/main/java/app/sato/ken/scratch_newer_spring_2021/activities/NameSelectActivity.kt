@@ -32,15 +32,5 @@ class NameSelectActivity : AppCompatActivity() {
             finish()
         }
 
-        share_name.setOnClickListener{
-            val builder = IntentBuilder.from(this)
-            val subject = "シェアメッセージ"
-            val bodyText =
-                "このアプリで\"$listContext\"が当選しました! おめでとう!\nダウンロードはこちら↓\nhttps://play.google.com/store/apps/details?id=app.sato.ken.scrtch"
-            builder.setSubject(subject) /// 件名
-                .setText(bodyText) /// 本文
-                .setType("text/plain")
-            builder.startChooser()
-        }
     }
 }

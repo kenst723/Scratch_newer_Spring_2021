@@ -49,16 +49,6 @@
 
             </app.sato.ken.scratch_newer_spring_2021.customView.ScratchView>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/share_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="12dp"
-                android:clickable="true"
-                ads:backgroundTint="#F3ECAF"
-                ads:srcCompat="@drawable/share" />
-
         </FrameLayout>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
