@@ -27,7 +27,8 @@ class RouletteActivity : AppCompatActivity() {
                     /**
                      * 1..255としないのは、1..255としてしまうと
                      * 16進数変換時に1桁の数となり、有効な色として認識されないため
-                     * 1桁の16進数は色に変換されない -> IllegalArgumentException
+                     * 1桁の16進数は色に変換されない ->
+                     * IllegalArgumentException
                      */
                     val r = (16..255).random()
                     val g = (16..255).random()
@@ -81,8 +82,7 @@ class RouletteActivity : AppCompatActivity() {
             }
         }
 
-        // random degrees (options)
-        val toDegrees = (2000..10000).random().toFloat()
+        val toDegrees = (2000..100000).random().toFloat()
         roulette.rotateRoulette(toDegrees, 4000, rouletteListener)
     }
 }

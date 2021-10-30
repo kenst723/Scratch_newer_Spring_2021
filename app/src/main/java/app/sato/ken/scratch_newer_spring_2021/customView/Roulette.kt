@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import androidx.core.view.*
 import app.sato.ken.scratch_newer_spring_2021.R
 import app.sato.ken.scratch_newer_spring_2021.model.RotateListener
 
@@ -21,15 +20,15 @@ class Roulette @JvmOverloads constructor(
     private var textColor = Color.BLACK
     private var rouletteBorderLineColor = Color.BLACK
     private var rouletteBorderLineWidth = 0f
-    private var colors = listOf("#fe4a49", "#2ab7ca", "#fed766", "#e6e6ea", "#f6abb6", "#005b96", "#7bc043", "#f37735","#E0BF5F","#FF039BE5","#FF9800","#FF757575","#A36200")
+    private var colors = listOf<String>()
 
 
     private var rouletteDataList = listOf("JhDroid", "Android")
     private var rouletteSize = rouletteDataList.size
-
     private val strokePaint = Paint()
     private val fillPaint = Paint()
     private val textPaint = Paint()
+
     init {
         val typedArray = context.theme.obtainStyledAttributes(
             attrs,
@@ -37,6 +36,7 @@ class Roulette @JvmOverloads constructor(
             defStyleAttr,
             0
         )
+
         rouletteBorderLineColor = typedArray.getColor( R.styleable.RouletteView_rouletteBorderLineColor, Color.BLACK )
         rouletteBorderLineWidth = typedArray.getDimension( R.styleable.RouletteView_rouletteBorderLineWidth, 20f )
         textColor = typedArray.getColor( R.styleable.RouletteView_textColor, Color.BLACK )
@@ -63,6 +63,7 @@ class Roulette @JvmOverloads constructor(
     }
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
+
         super.onDraw(canvas)
         val rectLeft = left.toFloat() + paddingLeft
         val rectRight = right.toFloat() - paddingLeft
@@ -130,11 +131,6 @@ class Roulette @JvmOverloads constructor(
         }
         return ""
     }
-    fun setTextSize(textSize: Float) {
-        this.textSize = textSize
-        invalidate()
-    }
-
 
     fun setRouletteDataList(list : List<String>){
         this.rouletteDataList = list
@@ -150,18 +146,13 @@ class Roulette @JvmOverloads constructor(
         this.rouletteSize = size
         invalidate()
     }
-    fun getTextSize(): Float = textSize fun setTextColor(textColor: Int) {
+    fun setTextColor(textColor: Int) {
         this.textColor = textColor
         invalidate()
-    } fun getTextColor(): Int = textColor
+    }
+    fun getTextColor(): Int = textColor
     fun setRouletteBorderLineColor(borderLineColor: Int) {
         this.rouletteBorderLineColor = borderLineColor
         invalidate()
     }
-    fun getRouletteBorderLineColor(): Int = rouletteBorderLineColor
-    fun setRouletteBorderLineWidth(width: Float) {
-        rouletteBorderLineWidth = width
-        invalidate()
-    }
-    fun getRouletteBorderLineWidth(): Float = rouletteBorderLineWidth
 }

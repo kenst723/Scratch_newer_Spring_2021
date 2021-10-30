@@ -29,11 +29,13 @@ class RouletteFragment : Fragment() {
     private val snack = ShowSnackBar()
     private val dataList = mutableListOf<RowModel>()
     var resultList = ArrayList<String>()
-    private val adapter = RouletteViewAdapter(dataList, object : RouletteViewAdapter.ListListener {
-        override fun onClickRow(tappedView: View, rowModel: RowModel) {
 
-        }
-    })
+    private val adapter by lazy {
+        RouletteViewAdapter(fragmentManager,requireContext(),dataList, object : RouletteViewAdapter.ListListener {
+            override fun onClickRow(tappedView: View, rowModel: RowModel) {
+            }
+        })
+    }
 
     companion object {
         const val send = "send"
@@ -105,25 +107,16 @@ class RouletteFragment : Fragment() {
 
             val intent = Intent(requireContext(), RouletteActivity::class.java)
 
-            if (dataList.isNotEmpty() or resultList.isNotEmpty()) {
-                intent.putStringArrayListExtra(send, resultList)
-                startActivity(intent)
-
-                Handler().postDelayed(
-                    {
-                        resultList.clear()
-                        dataList1.clear()
-                        adapter.notifyDataSetChanged()
-                    }, 100
-                )
-                Log.d("sending", resultList.toString())
-            } else {
-                snack.show("文字を入力してください",
+            if(dataList.size or resultList.size <= 1){
+                snack.show("2個以上必要です",
                     "OK",
                     rposView1,
                     requireContext().resources.getColor(R.color.colorPrimary),
                     resources.getColor(R.color.colorSnackBarActTextColor)
                 )
+            }else{
+                intent.putStringArrayListExtra(send, resultList)
+                startActivity(intent)
             }
         }
     }
